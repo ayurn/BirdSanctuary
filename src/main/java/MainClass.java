@@ -3,17 +3,18 @@ public class MainClass {
     public static void main(String[] args){
         System.out.println("Welcome to Bird Sanctuary");
 
-        BirdSanctuaryManager birdSanctuaryManager = new BirdSanctuaryManager();
+        BirdSanctuaryManager birdSanctuaryManager = BirdSanctuaryManager.getInstance();
+        BirdFactory birdFactory = new BirdFactory();
 
-        Parrot parrot = new Parrot("p");
-        Parrot parrot1 = new Parrot("p1");
-        Parrot parrot2 = new Parrot("p2");
-        Parrot parrot3 = new Parrot("p3");
-        Duck duck = new Duck("d1");
-        Penguin penguin = new Penguin("pn");
-        Crow crow = new Crow("c1");
+        Bird parrot = birdFactory.getBird("Parrot","p");
+        Bird parrot1 = birdFactory.getBird("Parrot","p1");
+        Bird parrot2 = birdFactory.getBird("Parrot","p2");
+        Bird parrot3 = birdFactory.getBird("Parrot","p3");
+        Bird duck = birdFactory.getBird("Parrot","p3");
+        Bird penguin = birdFactory.getBird("Penguin", "pn");
+        Bird crow = birdFactory.getBird("Crow", "c");
 
-        birdSanctuaryManager.add(parrot);
+        birdSanctuaryManager.add(null);
         birdSanctuaryManager.add(parrot1);
         birdSanctuaryManager.add(parrot2);
         birdSanctuaryManager.add(parrot3);
@@ -23,8 +24,9 @@ public class MainClass {
         birdSanctuaryManager.add(duck);
         birdSanctuaryManager.add(crow);
 
-
-        birdSanctuaryManager.print();
+        birdSanctuaryManager.printFlyable();
+        birdSanctuaryManager.printSwimmable();
+        birdSanctuaryManager.printEatable();
         //birdSanctuaryManager.remove(parrot1);
 
         System.out.println("Total birds : " + birdSanctuaryManager.getAllCount());
